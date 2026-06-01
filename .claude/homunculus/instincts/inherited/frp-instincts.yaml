@@ -1,0 +1,638 @@
+# Instincts generated from https://github.com/cubxxw/frp
+# Generated: 2026-06-01T04:34:35.011Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: frp-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/cubxxw/frp
+---
+
+# Frp Commit Length
+
+## Action
+
+Keep commit messages concise (~41 characters)
+
+## Evidence
+
+- Average commit message length: 41 chars
+- Based on 100 commits
+
+---
+id: frp-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/cubxxw/frp
+---
+
+# Frp Naming Files
+
+## Action
+
+Use snake_case naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: snake_case
+
+---
+id: frp-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/cubxxw/frp
+---
+
+# Frp Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: frp-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/cubxxw/frp
+---
+
+# Frp Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: frp-arch-type-based
+trigger: "when adding new code"
+confidence: 0.8
+domain: architecture
+source: repo-analysis
+source_repo: https://github.com/cubxxw/frp
+---
+
+# Frp Arch Type Based
+
+## Action
+
+Place code in the appropriate type folder (components/, services/, utils/, etc.)
+
+## Evidence
+
+- Type-based module organization detected
+- Folders: 
+
+---
+id: frp-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/cubxxw/frp
+---
+
+# Frp Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: frp-test-naming
+trigger: "when creating a test file"
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/cubxxw/frp
+---
+
+# Frp Test Naming
+
+## Action
+
+Name test files using the pattern: *_test.go
+
+## Evidence
+
+- File pattern: *_test.go
+- Consistent across test files
+
+---
+id: frp-test-types
+trigger: "when planning tests for a feature"
+confidence: 0.7
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/cubxxw/frp
+---
+
+# Frp Test Types
+
+## Action
+
+Write unit, e2e tests to match project standards
+
+## Evidence
+
+- Test types detected: unit, e2e
+- Coverage config: no
+
+---
+id: frp-workflow-test-driven-development
+trigger: "when adding new functionality"
+confidence: 0.8
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/frp
+---
+
+# Frp Workflow Test Driven Development
+
+## Action
+
+Follow the test-driven-development workflow:
+1. Write failing test
+2. Implement code to pass test
+3. Refactor if needed
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~6x per month
+- Files: **/*.test.*, **/*.spec.*, src/**/*
+
+---
+id: frp-workflow-release-version-bump
+trigger: "when doing release version bump"
+confidence: 0.55
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/frp
+---
+
+# Frp Workflow Release Version Bump
+
+## Action
+
+Follow the release-version-bump workflow:
+1. Update version in pkg/util/version/version.go (or utils/version/version.go in older structure).
+2. Update README.md and README_zh.md with new version if needed.
+3. Update Release.md.
+4. Update go.mod and go.sum.
+5. Update Makefile or Makefile.cross-compiles if needed.
+6. Update configuration files (conf/frpc_full.ini, conf/frps_full.ini, etc.).
+7. Update or add test files (test/e2e/, tests/ci/, etc.) as needed.
+8. Update or touch main code files (client/, server/, cmd/, pkg/, etc.) as needed.
+9. Update web assets if applicable (assets/frpc/static/, assets/frps/static/, web/frpc/, web/frps/).
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~1x per month
+- Files: pkg/util/version/version.go, README.md, README_zh.md
+
+---
+id: frp-workflow-config-structure-refactor
+trigger: "when doing config structure refactor"
+confidence: 0.55
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/frp
+---
+
+# Frp Workflow Config Structure Refactor
+
+## Action
+
+Follow the config-structure-refactor workflow:
+1. Move or rename config files (e.g., from models/config/ to pkg/config/).
+2. Update related code to use new config structure (client/, server/, cmd/, etc.).
+3. Update or add new test files for config (pkg/config/*_test.go, test/e2e/legacy/, test/e2e/v1/).
+4. Update documentation if needed.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~1x per month
+- Files: pkg/config/, models/config/, client/
+
+---
+id: frp-workflow-web-dashboard-assets-update
+trigger: "when doing web dashboard assets update"
+confidence: 0.55
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/frp
+---
+
+# Frp Workflow Web Dashboard Assets Update
+
+## Action
+
+Follow the web-dashboard-assets-update workflow:
+1. Update files in web/frpc/ or web/frps/ (Vue components, configs, package.json, yarn.lock, etc.).
+2. Regenerate or update static assets in assets/frpc/static/ and assets/frps/static/.
+3. Update statik.go files to embed new assets.
+4. Update README.md or documentation if needed.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~1x per month
+- Files: web/frpc/, web/frps/, assets/frpc/static/
+
+---
+id: frp-workflow-ci-cd-workflow-update
+trigger: "when doing ci cd workflow update"
+confidence: 0.55
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/frp
+---
+
+# Frp Workflow Ci Cd Workflow Update
+
+## Action
+
+Follow the ci-cd-workflow-update workflow:
+1. Edit or add files in .github/workflows/ (build-and-push-image.yml, goreleaser.yml, stale.yml, etc.).
+2. Edit .circleci/config.yml or .travis.yml if present.
+3. Update Makefile or package.sh if needed.
+4. Update README.md or Release.md if CI/CD changes affect usage.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~1x per month
+- Files: .github/workflows/, .circleci/config.yml, .travis.yml
+
+---
+id: frp-workflow-test-suite-expansion
+trigger: "when doing test suite expansion"
+confidence: 0.55
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/frp
+---
+
+# Frp Workflow Test Suite Expansion
+
+## Action
+
+Follow the test-suite-expansion workflow:
+1. Add or update files in test/e2e/, tests/ci/, or tests/mock/.
+2. Add or update *_test.go files in pkg/config/, pkg/util/, etc.
+3. Update related code to support new tests if needed.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~1x per month
+- Files: test/e2e/, tests/ci/, tests/mock/
+
+---
+id: frp-instinct-filename-snake-case
+trigger: "When creating a new file in the codebase"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/frp
+---
+
+# Frp Instinct Filename Snake Case
+
+## Action
+
+Name the file using snake_case
+
+## Evidence
+
+- Pattern in files: client/, server/, pkg/
+- Consistent with Go community conventions
+
+---
+id: frp-instinct-function-camelCase
+trigger: "When defining a new function"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/frp
+---
+
+# Frp Instinct Function CamelCase
+
+## Action
+
+Use camelCase for the function name
+
+## Evidence
+
+- Pattern in Go codebase
+- Go naming conventions
+
+---
+id: frp-instinct-class-PascalCase
+trigger: "When defining a new struct or class"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/frp
+---
+
+# Frp Instinct Class PascalCase
+
+## Action
+
+Use PascalCase for the struct or class name
+
+## Evidence
+
+- Pattern in Go codebase
+- Go naming conventions
+
+---
+id: frp-instinct-constant-SCREAMING_SNAKE_CASE
+trigger: "When defining a new constant"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/frp
+---
+
+# Frp Instinct Constant SCREAMING_SNAKE_CASE
+
+## Action
+
+Use SCREAMING_SNAKE_CASE for the constant name
+
+## Evidence
+
+- Pattern in Go codebase
+- Go naming conventions
+
+---
+id: frp-instinct-import-relative
+trigger: "When importing modules in Go code"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/frp
+---
+
+# Frp Instinct Import Relative
+
+## Action
+
+Use relative import paths
+
+## Evidence
+
+- Pattern in Go files
+- Architecture: single-package, type-based organization
+
+---
+id: frp-instinct-export-named
+trigger: "When exporting functions or types"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/frp
+---
+
+# Frp Instinct Export Named
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in Go codebase
+- Go export conventions
+
+---
+id: frp-instinct-test-file-pattern
+trigger: "When writing a test file in Go"
+confidence: 0.9
+domain: testing
+source: repo-analysis
+source_repo: cubxxw/frp
+---
+
+# Frp Instinct Test File Pattern
+
+## Action
+
+Name the file with *_test.go suffix
+
+## Evidence
+
+- Pattern in files: pkg/config/*_test.go, pkg/util/*_test.go
+- Go test conventions
+
+---
+id: frp-instinct-test-location-separate
+trigger: "When adding tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: cubxxw/frp
+---
+
+# Frp Instinct Test Location Separate
+
+## Action
+
+Place test files in separate test directories or as *_test.go in the relevant package
+
+## Evidence
+
+- test/e2e/, tests/ci/, tests/mock/, pkg/config/*_test.go
+
+---
+id: frp-instinct-test-types-unit-e2e
+trigger: "When expanding test coverage"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: cubxxw/frp
+---
+
+# Frp Instinct Test Types Unit E2e
+
+## Action
+
+Include both unit and end-to-end (e2e) tests
+
+## Evidence
+
+- test/e2e/, pkg/config/*_test.go
+- testing.testTypes: unit, e2e
+
+---
+id: frp-instinct-commit-prefix-optional
+trigger: "When writing a commit message"
+confidence: 0.7
+domain: git
+source: repo-analysis
+source_repo: cubxxw/frp
+---
+
+# Frp Instinct Commit Prefix Optional
+
+## Action
+
+Optionally use a prefix (e.g., feat:, fix:, build:, test:) followed by a concise description
+
+## Evidence
+
+- Commits: 'feat: support YAML merge...', 'fix: type error...'
+- No strict prefix enforcement
+
+---
+id: frp-instinct-commit-merge-pull-request
+trigger: "When merging a pull request"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: cubxxw/frp
+---
+
+# Frp Instinct Commit Merge Pull Request
+
+## Action
+
+Use the format 'Merge pull request #[number] from [user]/[branch]' in the commit message
+
+## Evidence
+
+- Commits: 'Merge pull request #1349 from fatedier/dev'
+- Pattern in commit history
+
+---
+id: frp-instinct-release-version-bump
+trigger: "When preparing a new release or patch version"
+confidence: 0.99
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/frp
+---
+
+# Frp Instinct Release Version Bump
+
+## Action
+
+Update version, documentation, configuration, tests, main code, and web assets as per release workflow
+
+## Evidence
+
+- Workflow: release-version-bump
+- Files: pkg/util/version/version.go, README.md, etc.
+
+---
+id: frp-instinct-config-structure-refactor
+trigger: "When updating the configuration system or supporting new config formats"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/frp
+---
+
+# Frp Instinct Config Structure Refactor
+
+## Action
+
+Move/rename config files, update related code, add/update tests, and update docs as per config refactor workflow
+
+## Evidence
+
+- Workflow: config-structure-refactor
+- Files: pkg/config/, models/config/, etc.
+
+---
+id: frp-instinct-web-dashboard-assets-update
+trigger: "When updating the frpc/frps web dashboard UI or static assets"
+confidence: 0.85
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/frp
+---
+
+# Frp Instinct Web Dashboard Assets Update
+
+## Action
+
+Update web dashboard files, regenerate static assets, update statik.go, and update documentation as per workflow
+
+## Evidence
+
+- Workflow: web-dashboard-assets-update
+- Files: web/frpc/, assets/frpc/static/, etc.
+
+---
+id: frp-instinct-ci-cd-workflow-update
+trigger: "When changing build, test, or release automation"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/frp
+---
+
+# Frp Instinct Ci Cd Workflow Update
+
+## Action
+
+Edit/add CI/CD workflow files, update Makefile/package.sh, and update docs if needed
+
+## Evidence
+
+- Workflow: ci-cd-workflow-update
+- Files: .github/workflows/, Makefile, etc.
+
+---
+id: frp-instinct-test-suite-expansion
+trigger: "When adding new features or improving test coverage"
+confidence: 0.85
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/frp
+---
+
+# Frp Instinct Test Suite Expansion
+
+## Action
+
+Add/update e2e, CI, mock, and *_test.go files; update code to support new tests
+
+## Evidence
+
+- Workflow: test-suite-expansion
+- Files: test/e2e/, pkg/config/*_test.go, etc.
+
